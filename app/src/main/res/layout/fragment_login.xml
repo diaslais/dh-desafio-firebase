@@ -3,12 +3,85 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/splashscreen"
     tools:context=".login.view.LoginFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <androidx.cardview.widget.CardView
+        android:layout_gravity="center"
+        android:layout_marginHorizontal="10dp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="10dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingTop="30dp"
+                android:paddingHorizontal="15dp">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/loginTxtLayoutEmail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:hintTextColor="@color/hints"
+                    android:textColorHint="@color/hints"
+                    app:boxBackgroundColor="@color/white"
+                    android:hint="E-mail">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/loginTxtEdtEmail"
+                        android:textColor="@color/text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/loginTxtLayoutPassword"
+                    android:layout_marginTop="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:hintTextColor="@color/hints"
+                    android:textColorHint="@color/hints"
+                    app:boxBackgroundColor="@color/white"
+                    app:endIconMode="password_toggle"
+                    android:hint="Password">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/loginTxtEdtPassword"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/text"
+                        android:inputType="textPassword" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <CheckBox
+                    android:id="@+id/loginCheckbox"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Remember me"
+                    android:textSize="16sp" />
+
+                <Button
+                    android:id="@+id/loginBtnLogIn"
+                    android:layout_marginTop="15dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/btn"
+                    android:text="Log in" />
+
+                <Button
+                    android:id="@+id/loginBtnRegister"
+                    style="@style/Widget.MaterialComponents.Button.TextButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Create account"
+                    android:textColor="@color/createacc"
+                    android:textAllCaps="false"
+                    android:layout_marginBottom="10dp"
+                    android:textSize="18sp" />
+            </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
 
 </FrameLayout>

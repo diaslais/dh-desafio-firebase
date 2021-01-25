@@ -1,14 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".detail.view.DetailFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/imgGameLarge"
+            android:layout_width="wrap_content"
+            android:layout_height="275dp"
+            tools:src="@drawable/mortalkombat_large"
+            android:scaleType="centerCrop" />
+        <Button
+            android:id="@+id/detailBtnBack"
+            android:backgroundTint="@color/transparent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:icon="@drawable/ic_baseline_arrow_back_24" />
+        <TextView
+            android:id="@+id/txtDetailGameName1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:paddingHorizontal="10dp"
+            android:text="Mortal Kombat X"
+            android:textColor="#fff"
+            android:textSize="28sp"
+            android:layout_marginBottom="15dp"/>
 
-</FrameLayout>
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/editFloatingActionButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_marginEnd="16dp"
+            app:srcCompat="@drawable/ic_outline_create_24"
+            android:contentDescription="Adicione um jogo" />
+
+
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/txtDetailGameName2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="Mortal Kombat X"
+        android:textSize="18sp"
+        android:paddingHorizontal="10dp"
+        android:layout_marginTop="20dp"/>
+    <TextView
+        android:id="@+id/txtDetailGameYear"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="Lançamento: 2018"
+        android:textSize="14sp"
+        android:paddingHorizontal="10dp"/>
+
+    <TextView
+        android:id="@+id/txtDescricaoPrato"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="@tools:sample/lorem/random"
+        android:paddingHorizontal="10dp"
+        android:layout_marginTop="20dp"/>
+
+    </LinearLayout>
+
+</ScrollView>
