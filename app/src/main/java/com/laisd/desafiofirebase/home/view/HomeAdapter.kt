@@ -9,17 +9,26 @@ import com.google.android.material.textview.MaterialTextView
 import com.laisd.desafiofirebase.R
 import com.laisd.desafiofirebase.home.model.Game
 
-class HomeAdapter(private val dataSet: List<Game>): RecyclerView.Adapter<HomeAdapter.HomeViewHolder>() {
+class HomeAdapter(
+    private val dataSet: List<Game>,
+    val listener: (Game) -> Unit
+): RecyclerView.Adapter<HomeAdapter.HomeViewHolder>() {
 
-    class HomeViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
+    inner class HomeViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
         private var fotoGame = itemView.findViewById<ImageView>(R.id.imgGameRecycler)
         private var nomeGame = itemView.findViewById<MaterialTextView>(R.id.txtGameName)
         private var anoGame = itemView.findViewById<MaterialTextView>(R.id.txtGameYear)
 
-        fun bind(game: Game){
+        fun bind(
+            game: Game
+        ) = with(itemView) {
             fotoGame.setImageResource(game.img)
             nomeGame.text = game.nome
             anoGame.text = game.ano.toString()
+
+            setOnClickListener {
+                listener(game)
+            }
         }
     }
 

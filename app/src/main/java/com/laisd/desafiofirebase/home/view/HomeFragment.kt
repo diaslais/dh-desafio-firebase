@@ -27,15 +27,27 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val navController = Navigation.findNavController(view)
+
+        val list = arrayListOf<Game>(
+            Game("Mostal Kombat", R.drawable.mortalkombat_large, 222, "joguinho"),
+            Game("Mostal Kombat", R.drawable.mortalkombat_large, 222, "joguinho"),
+            Game("Mostal Kombat", R.drawable.mortalkombat_large, 222, "joguinho"),
+            Game("Mostal Kombat", R.drawable.mortalkombat_large, 222, "joguinho"),
+            Game("Mostal Kombat", R.drawable.mortalkombat_large, 222, "joguinho"),
+            Game("Mostal Kombat", R.drawable.mortalkombat_large, 222, "joguinho"),
+            Game("Mostal Kombat", R.drawable.mortalkombat_large, 222, "joguinho"),
+            Game("Mostal Kombat", R.drawable.mortalkombat_large, 222, "joguinho")
+        )
+
+        val recyclerView = _view.findViewById<RecyclerView>(R.id.homeRecyclerView)
+
+        recyclerView.adapter = HomeAdapter(list) {
+            navController.navigate(R.id.action_homeFragment_to_detailFragment)
+        }
+
+        recyclerView.setHasFixedSize(true)
+        recyclerView.layoutManager = GridLayoutManager(context, 2)
     }
 
-    private fun makeRecyclerview(games: List<Game>) {
-        val planetsRecyclerView = _view.findViewById<RecyclerView>(R.id.homeRecyclerView)
-
-        planetsRecyclerView.adapter = HomeAdapter(games)
-
-        planetsRecyclerView.setHasFixedSize(true)
-        planetsRecyclerView.layoutManager = GridLayoutManager(context, 2)
-    }
 
 }
