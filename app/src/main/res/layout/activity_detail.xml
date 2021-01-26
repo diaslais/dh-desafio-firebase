@@ -59,16 +59,31 @@
             android:textSize="18sp"
             android:paddingHorizontal="10dp"
             android:layout_marginTop="20dp"/>
-        <TextView
-            android:id="@+id/txtDetailGameYear"
-            android:layout_width="wrap_content"
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            tools:text="Lançamento: 2018"
-            android:textSize="14sp"
-            android:paddingHorizontal="10dp"/>
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="Lançamento: "
+                android:textSize="14sp"
+                android:layout_marginStart="10dp"/>
+
+            <TextView
+                android:id="@+id/txtDetailGameYear"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="start"
+                tools:text="2018"
+                android:textSize="14sp"/>
+
+        </LinearLayout>
 
         <TextView
-            android:id="@+id/txtDescricaoPrato"
+            android:id="@+id/txtGameDescription"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             tools:text="@tools:sample/lorem/random"
