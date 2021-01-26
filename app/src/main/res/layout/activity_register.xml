@@ -79,7 +79,7 @@
                     android:textColorHint="@color/hints"
                     android:layout_height="wrap_content"
                     app:boxBackgroundColor="@color/white"
-                    android:hint="Password">
+                    android:hint="Confirm Password">
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/registerTxtEdtConfirmPassword"
                         android:layout_width="match_parent"

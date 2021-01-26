@@ -1,14 +1,13 @@
 package com.laisd.desafiofirebase.home.view
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.laisd.desafiofirebase.R
 import com.laisd.desafiofirebase.detail.view.DetailActivity
 import com.laisd.desafiofirebase.home.model.Game
-import com.laisd.desafiofirebase.login.view.RegisterActivity
 
 class HomeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,9 +24,7 @@ class HomeActivity : AppCompatActivity() {
                 Game("Mostal Kombat", R.drawable.mortalkombat_large, 222, "joguinho"),
                 Game("Mostal Kombat", R.drawable.mortalkombat_large, 222, "joguinho")
         )
-
         makeRecyclerview(list)
-
 
     }
 
