@@ -1,9 +1,12 @@
 package com.laisd.desafiofirebase.login.view
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.view.MotionEvent
+import android.view.inputmethod.InputMethodManager
 import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -64,10 +67,6 @@ class RegisterActivity : AppCompatActivity() {
             }
     }
 
-//    private fun signOut() {
-//        auth.signOut()
-//        updateUI(null)
-//    }
 
     private fun updateUI(user: FirebaseUser?) {
         if (user != null) {
@@ -157,5 +156,13 @@ class RegisterActivity : AppCompatActivity() {
         }
 
         return nothingEmpty
+    }
+
+    override fun dispatchTouchEvent(ev: MotionEvent?): Boolean {
+        if (currentFocus != null) {
+            val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+            imm.hideSoftInputFromWindow(currentFocus!!.windowToken, 0)
+        }
+        return super.dispatchTouchEvent(ev)
     }
 }
