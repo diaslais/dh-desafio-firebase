@@ -11,14 +11,16 @@ class GameRepository {
 
     private fun setGamesList(): List<Game> {
         return listOf(
-            Game("Jazz Jackrabbit",
+            Game("1",
+                    "Jazz Jackrabbit",
                 "https://upload.wikimedia.org/wikipedia/en/4/4c/Jazz-cover.jpg",
                 "1994",
                 "Jazz Jackrabbit is a platform game developed and published by Epic MegaGames." +
                         "It was released in 1994 for MS-DOS-based computers, with subsequent Macintosh and " +
                         "Microsoft Windows releases in 1995 and 1996."
             ),
-            Game("Carmen Sandiego",
+            Game("2",
+                    "Carmen Sandiego",
                 "https://upload.wikimedia.org/wikipedia/en/7/7c/Where_in_the_World_Is_Carmen_Sandiego.jpg",
                 "1996",
                 "Where in the World Is Carmen Sandiego? (sometimes referred to as Where in the " +
@@ -26,7 +28,8 @@ class GameRepository {
                         "franchise. It was the third version of the game, after the 1985 title of the same " +
                         "name and a 1992 Deluxe version of said game."
             ),
-            Game("Earthworm Jim 2",
+            Game("3",
+                    "Earthworm Jim 2",
                 "https://upload.wikimedia.org/wikipedia/en/d/da/Earthworm_Jim_2_%28EUR%29.PNG",
                 "1995",
                 "Earthworm Jim 2 is a run and gun platform video game starring " +
@@ -34,7 +37,8 @@ class GameRepository {
                         "original Earthworm Jim, and the second and final game in the Earthworm Jim series" +
                         " developed by original creators Doug TenNapel, David Perry, and Shiny Entertainment."
             ),
-            Game("Doom",
+            Game("4",
+                    "Doom",
                 "https://upload.wikimedia.org/wikipedia/pt/5/57/Doom_cover_art.jpg",
                 "1993",
                 "Doom is a 1993 first-person shooter (FPS) game developed by id Software for " +

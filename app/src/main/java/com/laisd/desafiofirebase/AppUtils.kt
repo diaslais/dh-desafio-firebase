@@ -24,10 +24,7 @@ object AppUtils {
     fun addToDatabase(game: Game) {
         val database = FirebaseDatabase.getInstance()
         val myRef = database.getReference(getUserId())
-
-        game.nome?.let { myRef.child(it).setValue(game) }
+        myRef.child(game.id.toString()).setValue(game)
     }
-
-
 }
 

@@ -29,6 +29,7 @@ import com.laisd.desafiofirebase.login.view.LoginActivity
 class HomeActivity : AppCompatActivity() {
 
     private lateinit var auth: FirebaseAuth
+    private lateinit var viewmodel: GameViewModel
 
     private val recyclerview: RecyclerView by lazy { findViewById<RecyclerView>(R.id.homeRecyclerView) }
     private val searchBar: SearchView by lazy { findViewById<SearchView>(R.id.homeSearchView) }
@@ -47,7 +48,7 @@ class HomeActivity : AppCompatActivity() {
         val userId = AppUtils.getUserId()
 
         //instancia viewmodel
-        val viewModel = ViewModelProvider(
+        viewmodel = ViewModelProvider(
             this,
             GameViewModel.GameViewModelFactory(GameRepository())
         ).get(GameViewModel::class.java)
@@ -56,15 +57,16 @@ class HomeActivity : AppCompatActivity() {
         val database = FirebaseDatabase.getInstance()
         val myRef = database.getReference(userId)
 
-        viewModel.getGames()
+        viewmodel.getGames()
 
         //inicia banco com dados iniciais
-        viewModel.gamesData.observe(this, Observer {
-            it.forEach {
-                AppUtils.addToDatabase(it)
-            }
-        })
-
+        if (isFirstTime()) {
+            viewmodel.gamesData.observe(this, Observer {
+                it.forEach {
+                    AppUtils.addToDatabase(it)
+                }
+            })
+        }
 
         myRef.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
@@ -72,7 +74,6 @@ class HomeActivity : AppCompatActivity() {
                 // This method is called once with the initial value and again
                 // whenever data at this location is updated.
                 dataSnapshot.children.forEach {
-                    //so é possivel ler do database aqui dentro!!!!
                     val value = it.getValue(Game::class.java)
 
                     if (value != null) {
@@ -81,7 +82,6 @@ class HomeActivity : AppCompatActivity() {
                 }
                 println(data)
                 makeRecyclerview(data)
-
             }
             override fun onCancelled(error: DatabaseError) {}
         })
@@ -92,6 +92,7 @@ class HomeActivity : AppCompatActivity() {
         recyclerview.adapter = HomeAdapter(gamesList) {
             val intent = Intent(this@HomeActivity, DetailActivity::class.java)
 
+            intent.putExtra("id", it.id)
             intent.putExtra("img", it.img)
             intent.putExtra("nome", it.nome)
             intent.putExtra("ano", it.ano)
@@ -107,6 +108,7 @@ class HomeActivity : AppCompatActivity() {
     private fun floatingActionButton() {
         addFloatingActionButton.setOnClickListener {
             val intent = Intent(this, EditActivity::class.java)
+            intent.putExtra("id", "")
             intent.putExtra("img", "")
             intent.putExtra("nome", "")
             intent.putExtra("ano", "")
@@ -142,5 +144,20 @@ class HomeActivity : AppCompatActivity() {
             val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
         }
+    }
+
+    private fun isFirstTime(): Boolean {
+        val prefs = getSharedPreferences(PREFS_NAME, MODE_PRIVATE)
+        val begin = prefs?.getBoolean(SHOWN, true)
+
+        if (begin!!) {
+            prefs.edit()?.putBoolean(SHOWN, false)?.apply()
+        }
+        return begin
+    }
+
+    companion object {
+        const val PREFS_NAME = "welcome_prefs"
+        const val SHOWN = "dialog_shown"
     }
 }

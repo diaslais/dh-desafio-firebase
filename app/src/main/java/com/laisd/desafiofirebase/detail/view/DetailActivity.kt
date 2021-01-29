@@ -30,6 +30,7 @@ class DetailActivity : AppCompatActivity() {
         }
 
         //recebe da HomeActivity
+        val gameId = intent.getStringExtra("id")
         val gameImg = intent.getStringExtra("img")
         val gameNome = intent.getStringExtra("nome")
         val gameAno = intent.getStringExtra("ano")
@@ -51,6 +52,7 @@ class DetailActivity : AppCompatActivity() {
         editFloatingActionButton.setOnClickListener {
             val intent = Intent(this, EditActivity::class.java)
 
+            intent.putExtra("id", gameId)
             intent.putExtra("img", gameImg)
             intent.putExtra("nome", gameNome)
             intent.putExtra("ano", gameAno)

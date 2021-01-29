@@ -4,13 +4,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.textview.MaterialTextView
 import com.laisd.desafiofirebase.R
 import com.laisd.desafiofirebase.home.model.Game
-import com.laisd.desafiofirebase.home.repository.GameRepository
-import com.laisd.desafiofirebase.home.viewmodel.GameViewModel
 import com.squareup.picasso.Picasso
 
 class HomeAdapter(
@@ -26,14 +23,16 @@ class HomeAdapter(
 
 
         fun bind(game: Game) = with(itemView) {
-            Picasso.get()
-                .load(
-                    game.img?.replace(
-                        "http://",
-                        "https://"
-                    )
-                ).into(fotoGame)
 
+            if (!game.img.isNullOrEmpty()) {
+                Picasso.get()
+                    .load(
+                        game.img?.replace(
+                                "http://",
+                                "https://"
+                        )
+                    ).into(fotoGame)
+            }
             nomeGame.text = game.nome
             anoGame.text = game.ano
 

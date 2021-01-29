@@ -61,6 +61,7 @@ class EditActivity : AppCompatActivity() {
         }
 
         //recebe da DetailActivity ou da HomeActivity
+        var gameId = intent.getStringExtra("id")
         val gameImg = intent.getStringExtra("img")
         val gameNome = intent.getStringExtra("nome")
         val gameAno = intent.getStringExtra("ano")
@@ -81,16 +82,23 @@ class EditActivity : AppCompatActivity() {
 
 
         btnSaveGame.setOnClickListener {
-            viewmodel.imgUrl.observe(this, Observer {
-                val newGame = Game(
-                        editName.text.toString(),
-                        it,
-                        editYear.text.toString(),
-                        editDescription.text.toString()
-                        )
+            if (gameId == null || gameId!!.isEmpty()) {
+                gameId = "${System.currentTimeMillis()}"
+            }
 
-                AppUtils.addToDatabase(newGame)
+            val newGame = Game(
+                    gameId,
+                    editName.text.toString(),
+                    gameImg,
+                    editYear.text.toString(),
+                    editDescription.text.toString()
+            )
+
+            viewmodel.imgUrl.observe(this, Observer {
+                newGame.img = it
             })
+
+            AppUtils.addToDatabase(newGame)
 
             val intent = Intent(this, HomeActivity::class.java)
             startActivity(intent)
@@ -114,7 +122,6 @@ class EditActivity : AppCompatActivity() {
             viewmodel.setUrl(this, imageUri)
         }
     }
-
 
     companion object {
         const val CONTENT_REQUEST_CODE = 1

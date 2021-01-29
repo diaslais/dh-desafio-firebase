@@ -1,8 +1,9 @@
 package com.laisd.desafiofirebase.home.model
 
 data class Game (
-    val nome: String? = "",
-    val img: String? = "",
-    val ano: String? = "",
-    val descricao: String? = ""
+    var id: String? = "",
+    var nome: String? = "",
+    var img: String? = "",
+    var ano: String? = "",
+    var descricao: String? = ""
 )
