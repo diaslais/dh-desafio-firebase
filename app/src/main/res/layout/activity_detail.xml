@@ -18,10 +18,10 @@
             android:layout_height="wrap_content">
             <ImageView
                 android:id="@+id/imgGameLarge"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="275dp"
                 tools:src="@drawable/mortalkombat_large"
-                android:scaleType="centerCrop" />
+                android:scaleType="fitXY" />
             <Button
                 android:id="@+id/detailBtnBack"
                 android:backgroundTint="@color/transparent"
@@ -47,7 +47,6 @@
                 android:layout_marginEnd="16dp"
                 app:srcCompat="@drawable/ic_outline_create_24"
                 android:contentDescription="Adicione um jogo" />
-
 
         </FrameLayout>
 
