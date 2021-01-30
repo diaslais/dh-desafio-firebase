@@ -13,7 +13,7 @@ class GameRepository {
         return listOf(
             Game("1",
                     "Jazz Jackrabbit",
-                "https://upload.wikimedia.org/wikipedia/en/4/4c/Jazz-cover.jpg",
+                "https://static.wikia.nocookie.net/jazzjackrabbit/images/1/1f/Jazz-jackrabbit-dos-front-cover.jpg/revision/latest?cb=20180223135950",
                 "1994",
                 "Jazz Jackrabbit is a platform game developed and published by Epic MegaGames." +
                         "It was released in 1994 for MS-DOS-based computers, with subsequent Macintosh and " +
@@ -30,7 +30,7 @@ class GameRepository {
             ),
             Game("3",
                     "Earthworm Jim 2",
-                "https://upload.wikimedia.org/wikipedia/en/d/da/Earthworm_Jim_2_%28EUR%29.PNG",
+                "https://static.wikia.nocookie.net/ewj/images/5/53/Earthworm_Jim_2.jpg/revision/latest?cb=20100614223208",
                 "1995",
                 "Earthworm Jim 2 is a run and gun platform video game starring " +
                         "an earthworm named Jim in a robotic suit who battles evil. It is a sequel to the " +
@@ -39,7 +39,7 @@ class GameRepository {
             ),
             Game("4",
                     "Doom",
-                "https://upload.wikimedia.org/wikipedia/pt/5/57/Doom_cover_art.jpg",
+                "https://store-images.s-microsoft.com/image/apps.55563.14303655336501012.2beb08d9-395e-453b-b5e3-0d4ac24d9d15.f9a0e430-b546-45f8-85f1-1d2b90bb84d5?mode=scale&q=90&h=1080&w=1920",
                 "1993",
                 "Doom is a 1993 first-person shooter (FPS) game developed by id Software for " +
                         "MS-DOS. Players assume the role of a space marine, popularly known as Doomguy, " +

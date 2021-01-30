@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.cardview.widget.CardView
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
@@ -27,6 +28,7 @@ class EditActivity : AppCompatActivity() {
     private lateinit var viewmodel: GameViewModel
 
     private val editImg: ImageView by lazy { findViewById<ImageView>(R.id.editImgChange) }
+    private val editCard: CardView by lazy { findViewById<CardView>(R.id.imgCard) }
     private val editName: TextInputEditText by lazy { findViewById<TextInputEditText>(R.id.editTxtEdtName) }
     private val editYear: TextInputEditText by lazy { findViewById<TextInputEditText>(R.id.editTxtEdtCreated) }
     private val editDescription: TextInputEditText by lazy { findViewById<TextInputEditText>(R.id.editTxtEdtDescription) }
@@ -44,7 +46,7 @@ class EditActivity : AppCompatActivity() {
         ).get(GameViewModel::class.java)
 
 
-        editImg.setOnClickListener {
+        editCard.setOnClickListener {
             when {
                 ContextCompat.checkSelfPermission(
                         this@EditActivity,

@@ -15,7 +15,13 @@
         android:theme="@style/Theme.DesafioFirebase">
         <activity android:name=".detail.view.DetailActivity"/>
         <activity android:name=".edit.view.EditActivity" />
-        <activity android:name=".home.view.HomeActivity" />
+        <activity android:name=".home.view.HomeActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.SEARCH" />
+            </intent-filter>
+            <meta-data android:name="android.app.searchable"
+                android:resource="@xml/searchable"/>
+        </activity>
         <activity android:name=".login.view.RegisterActivity" />
         <activity android:name=".login.view.LoginActivity" />
         <activity android:name=".splashscreen.view.SplashActivity">

@@ -1,5 +1,7 @@
 package com.laisd.desafiofirebase.home.view
 
+import android.app.SearchManager
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.widget.ImageButton
@@ -40,6 +42,14 @@ class HomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
 
+        val searchManager = getSystemService(Context.SEARCH_SERVICE) as SearchManager
+        searchBar.apply {
+            // Assumes current activity is the searchable activity
+            setSearchableInfo(searchManager.getSearchableInfo(componentName))
+            setIconifiedByDefault(false) // Do not iconify the widget; expand it by default
+        }
+
+
         auth = FirebaseAuth.getInstance()
         floatingActionButton()
         logoutBtn()
@@ -69,8 +79,9 @@ class HomeActivity : AppCompatActivity() {
         }
 
         myRef.addValueEventListener(object : ValueEventListener {
+            val data = mutableListOf<Game>()
             override fun onDataChange(dataSnapshot: DataSnapshot) {
-                val data = mutableListOf<Game>()
+
                 // This method is called once with the initial value and again
                 // whenever data at this location is updated.
                 dataSnapshot.children.forEach {
@@ -85,6 +96,8 @@ class HomeActivity : AppCompatActivity() {
             }
             override fun onCancelled(error: DatabaseError) {}
         })
+
+
 
     }
 
